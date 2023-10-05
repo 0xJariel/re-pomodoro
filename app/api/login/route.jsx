@@ -5,7 +5,7 @@ export async function POST(request) {
   try {
     const code = req.body.code;
     const spotifyApi = new SpotifyWebApi({
-      redirectUri: "http://localhost:5173",
+      redirectUri: "http://localhost:3000",
       clientId: process.env.SPOTIFY_CLIENT_ID,
       clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
     });
@@ -21,4 +21,11 @@ export async function POST(request) {
     console.error(err);
     return NextResponse.json({ error: "An error occurred" }, { status: 400 });
   }
+}
+
+export function GET() {
+  return NextResponse.json({
+    hello: "Hello Friend",
+    env: process.env.SPOTIFY_CLIENT_ID,
+  });
 }

@@ -1,4 +1,4 @@
-import Footer from "./components/Footer";
+import { TimerProvider } from "./context/TimerContext";
 import Navbar from "./components/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
@@ -13,9 +13,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Navbar />
-      <body className={inter.className}>{children}</body>
-      {/* <Footer /> */}
+      <body
+        className={inter.className}
+        // style={{ color: "black", backgroundColor: "white" }}
+      >
+        <Navbar />
+        <TimerProvider>{children}</TimerProvider>
+      </body>
     </html>
   );
 }
